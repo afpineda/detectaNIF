@@ -1,0 +1,4 @@
+﻿Extensiones=*
+MinBytesTamaño=0
+MinDiasCreado=0
+Salida=C:\temp\detectaNIF_porcfg.csv

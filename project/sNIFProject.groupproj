@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{3C8F60B8-DBCB-4594-B150-6CA21152B7F1}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="sNIFdebug.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="detectaNIF.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="sNIFdebug">
+        <MSBuild Projects="sNIFdebug.dproj"/>
+    </Target>
+    <Target Name="sNIFdebug:Clean">
+        <MSBuild Projects="sNIFdebug.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="sNIFdebug:Make">
+        <MSBuild Projects="sNIFdebug.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="detectaNIF">
+        <MSBuild Projects="detectaNIF.dproj"/>
+    </Target>
+    <Target Name="detectaNIF:Clean">
+        <MSBuild Projects="detectaNIF.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="detectaNIF:Make">
+        <MSBuild Projects="detectaNIF.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="sNIFdebug;detectaNIF"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="sNIFdebug:Clean;detectaNIF:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="sNIFdebug:Make;detectaNIF:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
